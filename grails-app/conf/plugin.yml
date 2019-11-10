@@ -1,0 +1,5 @@
+bie:
+    baseURL: https://bie.ala.org.au
+explorer:
+    index: /data/lucene/namematching
+
