@@ -7,8 +7,5 @@ class UrlMappings {
             controller = "nameExplorer"
             action = "index"
         }
-        "/"(redirect: "/nameExplorer")
-        "500"(view:'/error')
-        "404"(view:'/notFound')
     }
 }

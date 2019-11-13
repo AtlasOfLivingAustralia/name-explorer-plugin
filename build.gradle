@@ -45,13 +45,15 @@ dependencies {
     provided "org.grails:grails-plugin-services"
     provided "org.grails:grails-plugin-domain-class"
     runtime "com.bertramlabs.plugins:asset-pipeline-grails:2.14.2"
-    runtime "org.hibernate:hibernate-validator:5.4.2.Final"
+    runtime "org.hibernate:hibernate-validator:6.0.17.Final"
     testCompile "org.grails:grails-plugin-testing"
     testCompile "org.grails.plugins:geb"
     testRuntime "org.seleniumhq.selenium:selenium-htmlunit-driver:2.47.1"
     testRuntime "net.sourceforge.htmlunit:htmlunit:2.18"
 
-    compile group: 'au.org.ala', name: 'ala-name-matching', version: '3.5-SNAPSHOT'
+    compile(group: 'au.org.ala', name: 'ala-name-matching', version: '3.5-SNAPSHOT') {
+        exclude group: 'org.apache.bval', module: 'org.apache.bval.bundle'
+    }
     compile group: 'org.grails.plugins', name: 'ala-bootstrap3', version: '3.0.6'
 
 }
