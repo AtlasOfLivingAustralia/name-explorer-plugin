@@ -1,3 +1,7 @@
 .issues {
     overflow: auto;
 }
+
+.required {
+    color: red;
+}
