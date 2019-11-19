@@ -11,6 +11,7 @@ before_install:
   - cd /data/lucene
   - sudo tar zxvf namematching-20191115.tgz
   - sudo ln -s namematching-20191115 namematching
+  - sudo chown -R $USER *
   - ls -laF
   - cd $TRAVIS_BUILD_DIR
 before_cache:
