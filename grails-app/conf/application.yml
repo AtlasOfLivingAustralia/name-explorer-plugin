@@ -104,4 +104,4 @@ headerAndFooter:
 bie:
     baseURL: https://bie.ala.org.au
 explorer:
-    index: /data/lucene/namematching-20190213
+    index: /data/lucene/namematching
