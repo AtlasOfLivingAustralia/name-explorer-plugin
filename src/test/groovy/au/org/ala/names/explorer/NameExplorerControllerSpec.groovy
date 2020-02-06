@@ -38,7 +38,7 @@ class NameExplorerControllerSpec extends Specification {
         def rc = model.result.result.rankClassification
         rc.scientificName == "Acacia"
         rc.kingdom == "Plantae"
-        model.result.result.lsid == "http://id.biodiversity.org.au/tree/51337694/51303528"
+        model.result.result.lsid == "https://id.biodiversity.org.au/taxon/apni/51311124"
         model.soundex != null
         model.soundex.genus == "ACACA"
         model.matchErrors == "NONE"

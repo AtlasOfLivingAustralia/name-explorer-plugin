@@ -68,7 +68,7 @@ class NameExplorerServiceSpec extends Specification {
         result.errors.contains(ErrorType.NONE)
         result.result != null
         result.result.matchType == MatchType.EXACT
-        result.result.lsid == 'http://id.biodiversity.org.au/tree/51337694/51303528'
+        result.result.lsid == 'https://id.biodiversity.org.au/taxon/apni/51311124'
     }
 
     void "test find 3"() {

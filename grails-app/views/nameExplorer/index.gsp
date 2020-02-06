@@ -183,6 +183,16 @@
                             <div class="col-md-8 issues">${soundex?.genus} ${soundex?.species}</div>
                         </div>
                         <div class="row">
+                            <div class="col-md-4"><label><g:message code="page.label.left"/></label></div>
+
+                            <div class="col-md-8 issues">${result?.result?.left}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4"><label><g:message code="page.label.right"/></label></div>
+
+                            <div class="col-md-8 issues">${result?.result?.right}</div>
+                        </div>
+                        <div class="row">
                             <div class="col-md-4"><label><g:message code="page.label.notes"/></label></div>
 
                             <div class="col-md-8 issues">${issues}</div>
