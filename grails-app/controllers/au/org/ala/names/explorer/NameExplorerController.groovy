@@ -19,8 +19,9 @@ class NameExplorerController {
         source.order = StringUtils.trimToNull(params.order)
         source.family = StringUtils.trimToNull(params.family)
         source.genus = StringUtils.trimToNull(params.genus)
-        source.species = StringUtils.trimToNull(params.species)
-        source.infraspecificEpithet = StringUtils.trimToNull(params.infraspecificEpithet)
+        source.species = StringUtils.trimToNull(params.species) // Not in form, scince it doesn't appear to be used
+        source.specificEpithet = StringUtils.trimToNull(params.specificEpithet) // Not in form, scince it doesn't appear to be used
+        source.infraspecificEpithet = StringUtils.trimToNull(params.infraspecificEpithet) // Not in form, scince it doesn't appear to be used
         source.scientificName = StringUtils.trimToNull(params.scientificName)
         source.authorship = StringUtils.trimToNull(params.authorship)
         source.rank = StringUtils.trimToNull(params.rank)
