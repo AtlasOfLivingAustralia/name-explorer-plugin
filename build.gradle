@@ -51,9 +51,7 @@ dependencies {
     testRuntime "org.seleniumhq.selenium:selenium-htmlunit-driver:2.47.1"
     testRuntime "net.sourceforge.htmlunit:htmlunit:2.18"
 
-    compile(group: 'au.org.ala', name: 'ala-name-matching', version: '3.5-SNAPSHOT') {
-        exclude group: 'org.apache.bval', module: 'org.apache.bval.bundle'
-    }
+    provided(group: 'au.org.ala', name: 'ala-name-matching', version: '3.5-SNAPSHOT')
     compile group: 'org.grails.plugins', name: 'ala-bootstrap3', version: '3.0.6'
 
 }
