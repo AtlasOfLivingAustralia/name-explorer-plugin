@@ -7,10 +7,10 @@ branches:
   - master
   - develop
 before_install:
-  - sudo mkdir -p /data/lucene; sudo wget -O /data/lucene/namematching-20200101.tgz https://archives.ala.org.au/archives/nameindexes/20200101/namematching-20200101.tgz
+  - sudo mkdir -p /data/lucene; sudo wget -O /data/lucene/namematching-20200214.tgz https://archives.ala.org.au/archives/nameindexes/20200214/namematching-20200214.tgz
   - cd /data/lucene
-  - sudo tar zxvf namematching-20200101.tgz
-  - sudo ln -s namematching-20200101 namematching
+  - sudo tar zxvf namematching-20200214.tgz
+  - sudo ln -s namematching-20200214 namematching
   - sudo chown -R $USER *
   - ls -laF
   - cd $TRAVIS_BUILD_DIR
