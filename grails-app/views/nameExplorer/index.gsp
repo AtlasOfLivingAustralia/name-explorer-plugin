@@ -3,6 +3,7 @@
 <head>
     <meta name="layout" content="${grailsApplication.config.skin.layout}"/>
     <title>Name Index Explorer</title>
+    <asset:stylesheet src="explorer.css"/>
 </head>
 
 <body>
@@ -21,115 +22,117 @@
                     <g:form controller="nameExplorer">
                         <fieldset>
                             <div class="form-group row">
-                                <label class="form-label col-sm-4 col-md-2" for="scientificName"><g:message
-                                        code="page.label.scientificName"/></label>
+                                <label class="form-label col-sm-4 col-md-3" for="scientificName"><g:message
+                                        code="page.label.scientificName"/><sup><div class="required glyphicon glyphicon-star" title="${message(code: 'page.label.required')}">&nbsp;</div></sup></label>
 
-                                <div class="col-sm-4 col-md-4"><g:textField id="scientificName" name="scientificName"
+                                <div class="col-sm-4 col-md-5"><g:textField id="scientificName" name="scientificName"
                                                                             class="form-control col-sm-8 col-md-10"
                                                                             value="${source?.scientificName}"
                                                                             title="${message(code: 'page.label.scientificName.detail')}"
                                                                             placeholder="${message(code: 'page.label.scientificName.placeholder')}"/></div>
 
-                                <div class="col-sm-4 col-md-6"><ne:nameLink name="${cl?.scientificName}"
-                                                                            id="${result?.result?.lsid}"/></div>
+                                <div class="col-sm-4 col-md-4">
+                                    <ne:nameLink name="${cl?.scientificName}" id="${result?.result?.lsid}"/>
+                                    <g:if test="${result && !result.result}"><g:message code="page.message.notFound"/></g:if>
+                                </div>
                             </div>
 
                             <div class="form-group row">
-                                <label class="form-label col-sm-4 col-md-2" for="authorship"><g:message
+                                <label class="form-label col-sm-4 col-md-3" for="authorship"><g:message
                                         code="page.label.authorship"/></label>
 
-                                <div class="col-sm-4 col-md-4"><g:textField id="authorship" name="authorship"
+                                <div class="col-sm-4 col-md-5"><g:textField id="authorship" name="authorship"
                                                                             class="form-control col-sm-8 col-md-10"
                                                                             value="${source?.authorship}"
                                                                             title="${message(code: 'page.label.authorship.detail')}"
                                                                             placeholder="${message(code: 'page.label.authorship.placeholder')}"/></div>
 
-                                <div class="col-sm-4 col-md-6">${cl?.authorship}</div>
+                                <div class="col-sm-4 col-md-4">${cl?.authorship}</div>
                             </div>
 
                             <div class="form-group row">
-                                <label class="form-label col-sm-4 col-md-2" for="kingdom"><g:message
+                                <label class="form-label col-sm-4 col-md-3" for="kingdom"><g:message
                                         code="page.label.kingdom"/></label>
 
-                                <div class="col-sm-4 col-md-4"><g:textField id="kingdom" name="kingdom"
+                                <div class="col-sm-4 col-md-5"><g:textField id="kingdom" name="kingdom"
                                                                             class="form-control col-sm-8 col-md-10"
                                                                             value="${source?.kingdom}"
                                                                             placeholder="${g.message(code: 'page.label.kingdom.placeholder')}"/></div>
 
-                                <div class="col-sm-4 col-md-6"><ne:nameLink name="${cl?.kingdom}"
+                                <div class="col-sm-4 col-md-4"><ne:nameLink name="${cl?.kingdom}"
                                                                             id="${cl?.kid}"/></div>
                             </div>
 
                             <div class="form-group row">
-                                <label class="form-label col-sm-4 col-md-2" for="phylum"><g:message
+                                <label class="form-label col-sm-4 col-md-3" for="phylum"><g:message
                                         code="page.label.phylum"/></label>
 
-                                <div class="col-sm-4 col-md-4"><g:textField id="phylum" name="phylum"
+                                <div class="col-sm-4 col-md-5"><g:textField id="phylum" name="phylum"
                                                                             class="form-control col-sm-8 col-md-10"
                                                                             value="${source?.phylum}"
                                                                             placeholder="${g.message(code: 'page.label.phylum.placeholder')}"/></div>
 
-                                <div class="col-sm-4 col-md-6"><ne:nameLink name="${cl?.phylum}" id="${cl?.pid}"/></div>
+                                <div class="col-sm-4 col-md-4"><ne:nameLink name="${cl?.phylum}" id="${cl?.pid}"/></div>
                             </div>
 
                             <div class="form-group row">
-                                <label class="form-label col-sm-4 col-md-2" for="klass"><g:message
+                                <label class="form-label col-sm-4 col-md-3" for="klass"><g:message
                                         code="page.label.class"/></label>
 
-                                <div class="col-sm-4 col-md-4"><g:textField id="klass" name="klass"
+                                <div class="col-sm-4 col-md-5"><g:textField id="klass" name="klass"
                                                                             class="form-control col-sm-8 col-md-10"
                                                                             value="${source?.klass}"
                                                                             placeholder="${g.message(code: 'page.label.class.placeholder')}"/></div>
 
-                                <div class="col-sm-4 col-md-6"><ne:nameLink name="${cl?.klass}" id="${cl?.cid}"/></div>
+                                <div class="col-sm-4 col-md-4"><ne:nameLink name="${cl?.klass}" id="${cl?.cid}"/></div>
                             </div>
 
                             <div class="form-group row">
-                                <label class="form-label col-sm-4 col-md-2" for="order"><g:message
+                                <label class="form-label col-sm-4 col-md-3" for="order"><g:message
                                         code="page.label.order"/></label>
 
-                                <div class="col-sm-4 col-md-4"><g:textField id="order" name="order"
+                                <div class="col-sm-4 col-md-5"><g:textField id="order" name="order"
                                                                             class="form-control col-sm-8 col-md-10"
                                                                             value="${source?.order}"
                                                                             placeholder="${g.message(code: 'page.label.order.placeholder')}"/></div>
 
-                                <div class="col-sm-4 col-md-6"><ne:nameLink name="${cl?.order}" id="${cl?.oid}"/></div>
+                                <div class="col-sm-4 col-md-4"><ne:nameLink name="${cl?.order}" id="${cl?.oid}"/></div>
                             </div>
 
                             <div class="form-group row">
-                                <label class="form-label col-sm-4 col-md-2" for="family"><g:message
+                                <label class="form-label col-sm-4 col-md-3" for="family"><g:message
                                         code="page.label.family"/></label>
 
-                                <div class="col-sm-4 col-md-4"><g:textField id="family" name="family"
+                                <div class="col-sm-4 col-md-5"><g:textField id="family" name="family"
                                                                             class="form-control col-sm-8 col-md-10"
                                                                             value="${source?.family}"
                                                                             placeholder="${g.message(code: 'page.label.family.placeholder')}"/></div>
 
-                                <div class="col-sm-4 col-md-6"><ne:nameLink name="${cl?.family}" id="${cl?.fid}"/></div>
+                                <div class="col-sm-4 col-md-4"><ne:nameLink name="${cl?.family}" id="${cl?.fid}"/></div>
                             </div>
 
                             <div class="form-group row">
-                                <label class="form-label col-sm-4 col-md-2" for="genus"><g:message
+                                <label class="form-label col-sm-4 col-md-3" for="genus"><g:message
                                         code="page.label.genus"/></label>
 
-                                <div class="col-sm-4 col-md-4"><g:textField id="genus" name="genus"
+                                <div class="col-sm-4 col-md-5"><g:textField id="genus" name="genus"
                                                                             class="form-control col-sm-8 col-md-10"
                                                                             value="${source?.genus}"
                                                                             placeholder="${g.message(code: 'page.label.genus.placeholder')}"/></div>
 
-                                <div class="col-sm-4 col-md-6"><ne:nameLink name="${cl?.genus}" id="${cl?.gid}"/></div>
+                                <div class="col-sm-4 col-md-4"><ne:nameLink name="${cl?.genus}" id="${cl?.gid}"/></div>
                             </div>
 
                             <div class="form-group row">
-                                <label class="form-label col-sm-4 col-md-2" for="rank"><g:message
+                                <label class="form-label col-sm-4 col-md-3" for="rank"><g:message
                                         code="page.label.rank"/></label>
 
-                                <div class="col-sm-4 col-md-4"><g:textField id="rank" name="rank"
+                                <div class="col-sm-4 col-md-5"><g:textField id="rank" name="rank"
                                                                             class="form-control col-sm-8 col-md-10"
                                                                             value="${source?.rank}"
                                                                             placeholder="${g.message(code: 'page.label.rank.placeholder')}"/></div>
 
-                                <div class="col-sm-4 col-md-6"><g:fieldValue bean="${result?.result}"
+                                <div class="col-sm-4 col-md-4"><g:fieldValue bean="${result?.result}"
                                                                              field="rank"/></div>
                             </div>
                         </fieldset>
@@ -174,6 +177,21 @@
                             <div class="col-md-8">${result?.result?.synonymType}</div>
                         </div>
 
+                        <div class="row">
+                            <div class="col-md-4"><label><g:message code="page.label.soundex"/></label></div>
+
+                            <div class="col-md-8 issues">${soundex?.genus} ${soundex?.species}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4"><label><g:message code="page.label.left"/></label></div>
+
+                            <div class="col-md-8 issues">${result?.result?.left}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4"><label><g:message code="page.label.right"/></label></div>
+
+                            <div class="col-md-8 issues">${result?.result?.right}</div>
+                        </div>
                         <div class="row">
                             <div class="col-md-4"><label><g:message code="page.label.notes"/></label></div>
 

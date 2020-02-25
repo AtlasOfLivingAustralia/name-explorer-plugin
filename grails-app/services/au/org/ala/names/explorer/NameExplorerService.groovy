@@ -31,10 +31,14 @@ class NameExplorerService implements GrailsConfigurationAware {
     }
 
     def soundex(String name) {
-        PhraseNameParser parser = new PhraseNameParser()
-        ParsedName pn = parser.parse(name)
-        String genus = TaxonNameSoundEx.treatWord(pn.genusOrAbove, "genus")
-        String species = pn.isBinomial() ? TaxonNameSoundEx.treatWord(pn.specificEpithet, "species") : null
-        return [genus: genus, species: species]
+        try {
+            PhraseNameParser parser = new PhraseNameParser()
+            ParsedName pn = parser.parse(name)
+            String genus = TaxonNameSoundEx.treatWord(pn.genusOrAbove, "genus")
+            String species = pn.isBinomial() ? TaxonNameSoundEx.treatWord(pn.specificEpithet, "species") : null
+            return [genus: genus, species: species]
+        } catch (Exception ex) { // Usuablly a name parsing error but who cares
+            return [:]
+        }
     }
 }
