@@ -51,7 +51,7 @@ dependencies {
     testRuntime "org.seleniumhq.selenium:selenium-htmlunit-driver:2.47.1"
     testRuntime "net.sourceforge.htmlunit:htmlunit:2.18"
 
-    compile group: 'au.org.ala.names', name: 'ala-namematching-client', version: '1.5-SNAPSHOT'
+    compile group: 'au.org.ala.names', name: 'ala-namematching-client', version: '1.4'
     compile group: 'org.grails.plugins', name: 'ala-bootstrap3', version: '3.2.3'
 
 }
