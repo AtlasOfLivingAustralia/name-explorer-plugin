@@ -1,4 +1,4 @@
-# Name Explorer Plugin [![Build Status](https://travis-ci.com/AtlasOfLivingAustralia/name-explorer-plugin.svg?branch=master)](https://travis-ci.com/AtlasOfLivingAustralia/name-explorer-plugin)
+# Name Explorer Plugin [![Build Status](https://travis-ci.com/AtlasOfLivingAustralia/name-explorer-plugin.svg?branch=master)](https://app.travis-ci.com/github/AtlasOfLivingAustralia/name-explorer-plugin)
 
 A plugin that can be used to provide a user interface to the underlying
 ALA name matching system.
