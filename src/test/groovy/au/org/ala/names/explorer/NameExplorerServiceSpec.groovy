@@ -1,11 +1,10 @@
 package au.org.ala.names.explorer
 
-import au.org.ala.names.model.ErrorType
-import au.org.ala.names.model.LinnaeanRankClassification
-import au.org.ala.names.model.MatchType
+
+import au.org.ala.names.ws.api.NameSearch
 import grails.test.mixin.TestFor
-import org.gbif.api.vocabulary.NameType
 import org.yaml.snakeyaml.Yaml
+import spock.lang.Ignore
 import spock.lang.Specification
 
 /**
@@ -25,6 +24,7 @@ class NameExplorerServiceSpec extends Specification {
     def cleanup() {
     }
 
+    @Ignore // Redo when soundex reintroduced
     void "test soundex 1"() {
         when:
         def soundex = service.soundex("Acacia")
@@ -33,6 +33,7 @@ class NameExplorerServiceSpec extends Specification {
         soundex.species == null
     }
 
+    @Ignore
     void "test soundex 2"() {
         when:
         def soundex = service.soundex("Osphranter rufus")
@@ -43,44 +44,42 @@ class NameExplorerServiceSpec extends Specification {
 
     void "test find 1"() {
         when:
-        def source = new LinnaeanRankClassification()
+        def source = new NameSearch.NameSearchBuilder()
         source.scientificName = "Osphranter rufus"
         then:
-        def result = service.find(source)
+        def result = service.find(source.build())
         result != null
-        result.nameType == NameType.SCIENTIFIC
-        result.errors != null
-        result.errors.contains(ErrorType.NONE)
-        result.result != null
-        result.result.matchType == MatchType.EXACT
-        result.result.lsid == 'urn:lsid:biodiversity.org.au:afd.taxon:e6aff6af-ff36-4ad5-95f2-2dfdcca8caff'
+        result.nameType == "SCIENTIFIC"
+        result.issues != null
+        result.issues.contains("noIssue")
+        result.matchType == "exactMatch"
+        result.taxonConceptID == 'urn:lsid:biodiversity.org.au:afd.taxon:e6aff6af-ff36-4ad5-95f2-2dfdcca8caff'
     }
 
     void "test find 2"() {
         when:
-        def source = new LinnaeanRankClassification()
+        def source = new NameSearch.NameSearchBuilder()
         source.scientificName = "Acacia"
         then:
-        def result = service.find(source)
+        def result = service.find(source.build())
         result != null
-        result.nameType == NameType.SCIENTIFIC
-        result.errors != null
-        result.errors.contains(ErrorType.NONE)
-        result.result != null
-        result.result.matchType == MatchType.EXACT
-        result.result.lsid == 'https://id.biodiversity.org.au/taxon/apni/51311124'
+        result.nameType == "SCIENTIFIC"
+        result.issues != null
+        result.issues.contains("noIssue")
+        result.matchType == "exactMatch"
+        result.taxonConceptID == 'https://id.biodiversity.org.au/taxon/apni/51311124'
     }
 
     void "test find 3"() {
         when:
-        def source = new LinnaeanRankClassification()
+        def source = new NameSearch.NameSearchBuilder()
         source.scientificName = "Macropus"
         then:
-        def result = service.find(source)
+        def result = service.find(source.build())
         result != null
-        result.nameType == NameType.SCIENTIFIC
-        result.errors != null
-        result.errors.contains(ErrorType.HOMONYM)
-        result.result == null
+        result.nameType == "SCIENTIFIC"
+        result.issues != null
+        result.issues.contains("homonym")
+        result.success == false
     }
 }

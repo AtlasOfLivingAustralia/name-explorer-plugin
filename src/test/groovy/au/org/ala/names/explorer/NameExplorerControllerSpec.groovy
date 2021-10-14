@@ -1,6 +1,5 @@
 package au.org.ala.names.explorer
 
-import au.org.ala.names.model.ErrorType
 import grails.test.mixin.TestFor
 import org.yaml.snakeyaml.Yaml
 import spock.lang.Specification
@@ -33,16 +32,13 @@ class NameExplorerControllerSpec extends Specification {
         model.source.scientificName == "Acacia"
         model.source.kingdom == null
         model.result != null
-        model.result.result != null
-        model.result.result.rankClassification != null
-        def rc = model.result.result.rankClassification
+        def rc = model.result
         rc.scientificName == "Acacia"
         rc.kingdom == "Plantae"
-        model.result.result.lsid == "https://id.biodiversity.org.au/taxon/apni/51311124"
-        model.soundex != null
-        model.soundex.genus == "ACACA"
-        model.matchErrors == "NONE"
-        model.issues == ""
+        rc.taxonConceptID == "https://id.biodiversity.org.au/taxon/apni/51311124"
+        //model.soundex != null
+        //model.soundex.genus == "ACACA"
+        model.issues == "noIssue"
     }
 
     void "test index 2"() {
@@ -55,17 +51,14 @@ class NameExplorerControllerSpec extends Specification {
         model.source.kingdom == null
         model.source.genus == null
         model.result != null
-        model.result.result != null
-        model.result.result.rankClassification != null
-        def rc = model.result.result.rankClassification
+        def rc = model.result
         rc.scientificName == "Osphranter rufus"
         rc.kingdom == "Animalia"
         rc.genus == "Osphranter"
-        model.result.result.lsid == "urn:lsid:biodiversity.org.au:afd.taxon:e6aff6af-ff36-4ad5-95f2-2dfdcca8caff"
-        model.soundex != null
-        model.soundex.genus == "OSPRANTIR"
-        model.matchErrors == "NONE"
-        model.issues == ""
+        rc.taxonConceptID == "urn:lsid:biodiversity.org.au:afd.taxon:e6aff6af-ff36-4ad5-95f2-2dfdcca8caff"
+        //model.soundex != null
+        //model.soundex.genus == "OSPRANTIR"
+        model.issues == "noIssue"
     }
 
     void "test index 3"() {
@@ -77,8 +70,6 @@ class NameExplorerControllerSpec extends Specification {
         model.source.scientificName == "Macropus"
         model.source.kingdom == null
         model.result != null
-        model.result.result == null
-        model.matchErrors == "HOMONYM"
-        model.issues.startsWith("Warning an unresolved homonym has been detected.")
+        model.issues == "homonym"
     }
 }

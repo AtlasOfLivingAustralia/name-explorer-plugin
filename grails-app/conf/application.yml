@@ -89,10 +89,8 @@ endpoints:
         unique-names: true
 ---
 ---
-#Required so that the gbif-ecat library does not bugger up initialisation from its internal application.properties
 app:
     name: name-explorer-plugin
-    dataDir: /tmp/gbif-ecat
 skin:
     layout: generic
     orgNameLong: Name Explorer Plugin
@@ -103,5 +101,5 @@ headerAndFooter:
   version: 2
 bie:
     baseURL: https://bie.ala.org.au
-explorer:
-    index: /data/lucene/namematching
+namematching:
+    serviceURL: https://namematching-ws.ala.org.au
